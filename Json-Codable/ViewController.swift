@@ -9,11 +9,36 @@ import UIKit
 
 class ViewController: UITableViewController {
 
-    var petetions = [Petition]()
+    var petitions = [Petition]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+       
+        if let data = fetchData(fromUrl: urlString) {
+            parseJson(json: data)
+        }
+        
+    }
+    
+    func fetchData(fromUrl urlString:String)->Data?{
+        
+        if let url = URL(string: urlString) {
+            if let data = try? Data(contentsOf: url){
+                return data
+            }
+        }
+        
+        return nil
+    }
+    
+    func parseJson(json:Data){
+        let decoder = JSONDecoder()
+        if let jsonData = try? decoder.decode(Petitions.self, from: json) {
+            petitions = jsonData.results
+            tableView.reloadData()
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -21,16 +46,24 @@ class ViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return petetions.count
+        return petitions.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
          let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = "pettion title here"
-            cell.detailTextLabel?.text = "petetion details goes here"
+        let pitition = petitions[indexPath.row]
+        cell.textLabel?.text = pitition.title
+        cell.textLabel?.numberOfLines = 0
+        cell.detailTextLabel?.text = pitition.body
             return cell
         
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.detailItem = petitions[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

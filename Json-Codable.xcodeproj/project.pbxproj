@@ -16,6 +16,7 @@
 		6FFB50F825751CB9000BB82C /* Json_CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB50F725751CB9000BB82C /* Json_CodableTests.swift */; };
 		6FFB510325751CB9000BB82C /* Json_CodableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB510225751CB9000BB82C /* Json_CodableUITests.swift */; };
 		6FFB511425752380000BB82C /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB511325752380000BB82C /* Petition.swift */; };
+		6FFB511C25752D2A000BB82C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB511B25752D2A000BB82C /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		6FFB510225751CB9000BB82C /* Json_CodableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json_CodableUITests.swift; sourceTree = "<group>"; };
 		6FFB510425751CB9000BB82C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FFB511325752380000BB82C /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
+		6FFB511B25752D2A000BB82C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +103,8 @@
 		6FFB50DF25751CB4000BB82C /* Json-Codable */ = {
 			isa = PBXGroup;
 			children = (
-				6FFB50E025751CB4000BB82C /* AppDelegate.swift */,
-				6FFB50E225751CB4000BB82C /* SceneDelegate.swift */,
-				6FFB50E425751CB4000BB82C /* ViewController.swift */,
+				6FFB512125752D56000BB82C /* Delegates */,
+				6FFB512025752D4D000BB82C /* ViewControllers */,
 				6FFB50E625751CB4000BB82C /* Main.storyboard */,
 				6FFB50E925751CB9000BB82C /* Assets.xcassets */,
 				6FFB50EB25751CB9000BB82C /* LaunchScreen.storyboard */,
@@ -129,6 +130,24 @@
 				6FFB510425751CB9000BB82C /* Info.plist */,
 			);
 			path = "Json-CodableUITests";
+			sourceTree = "<group>";
+		};
+		6FFB512025752D4D000BB82C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6FFB50E425751CB4000BB82C /* ViewController.swift */,
+				6FFB511B25752D2A000BB82C /* DetailViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6FFB512125752D56000BB82C /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				6FFB50E025751CB4000BB82C /* AppDelegate.swift */,
+				6FFB50E225751CB4000BB82C /* SceneDelegate.swift */,
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +282,7 @@
 			files = (
 				6FFB50E525751CB4000BB82C /* ViewController.swift in Sources */,
 				6FFB511425752380000BB82C /* Petition.swift in Sources */,
+				6FFB511C25752D2A000BB82C /* DetailViewController.swift in Sources */,
 				6FFB50E125751CB4000BB82C /* AppDelegate.swift in Sources */,
 				6FFB50E325751CB4000BB82C /* SceneDelegate.swift in Sources */,
 			);
