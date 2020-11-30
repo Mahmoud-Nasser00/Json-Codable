@@ -11,6 +11,10 @@ class ViewController: UITableViewController {
 
     //MARK: Variables
     var petitions = [Petition]()
+    var filteredPetitions = [Petition]()
+    var petitionsToShow = [Petition]()
+    
+    var isSearching:Bool = false
     
     //MARK: life cycle
     override func viewDidLoad() {
@@ -19,12 +23,15 @@ class ViewController: UITableViewController {
         let urlString:String = route()
         
         addCreditsBarBtn()
+        addSearchBar()
         
         if let data = fetchData(fromUrl: urlString) {
             parseJson(json: data)
         } else {
             showError()
         }
+        
+        petitionsToShow = petitions
         
     }
     
@@ -39,6 +46,14 @@ class ViewController: UITableViewController {
     
     func addCreditsBarBtn(){
        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(showCredits))
+    }
+    
+    func addSearchBar(){
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
     }
     
     func showError() {
@@ -84,17 +99,17 @@ class ViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return petitions.count
+        return petitionsToShow.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let pitition = petitions[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let pitition = petitionsToShow[indexPath.row]
         cell.textLabel?.text = pitition.title
         cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = pitition.body
-            return cell
+        return cell
         
     }
     
@@ -106,3 +121,14 @@ class ViewController: UITableViewController {
     
 }
 
+extension ViewController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = String(searchController.searchBar.text!)
+        print(searchText)
+        filteredPetitions = petitions.filter({ (item) -> Bool in
+            item.title.localizedCaseInsensitiveContains(searchText)
+        })
+        petitionsToShow = !searchText.isEmpty ? filteredPetitions : petitions
+        tableView.reloadData()
+    }
+}
