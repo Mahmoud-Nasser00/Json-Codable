@@ -15,6 +15,7 @@
 		6FFB50ED25751CB9000BB82C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FFB50EB25751CB9000BB82C /* LaunchScreen.storyboard */; };
 		6FFB50F825751CB9000BB82C /* Json_CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB50F725751CB9000BB82C /* Json_CodableTests.swift */; };
 		6FFB510325751CB9000BB82C /* Json_CodableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB510225751CB9000BB82C /* Json_CodableUITests.swift */; };
+		6FFB511425752380000BB82C /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB511325752380000BB82C /* Petition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		6FFB50FE25751CB9000BB82C /* Json-CodableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Json-CodableUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FFB510225751CB9000BB82C /* Json_CodableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json_CodableUITests.swift; sourceTree = "<group>"; };
 		6FFB510425751CB9000BB82C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FFB511325752380000BB82C /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				6FFB50E925751CB9000BB82C /* Assets.xcassets */,
 				6FFB50EB25751CB9000BB82C /* LaunchScreen.storyboard */,
 				6FFB50EE25751CB9000BB82C /* Info.plist */,
+				6FFB511325752380000BB82C /* Petition.swift */,
 			);
 			path = "Json-Codable";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FFB50E525751CB4000BB82C /* ViewController.swift in Sources */,
+				6FFB511425752380000BB82C /* Petition.swift in Sources */,
 				6FFB50E125751CB4000BB82C /* AppDelegate.swift in Sources */,
 				6FFB50E325751CB4000BB82C /* SceneDelegate.swift in Sources */,
 			);
