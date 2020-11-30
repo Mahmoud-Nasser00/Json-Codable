@@ -9,29 +9,45 @@ import UIKit
 
 class ViewController: UITableViewController {
 
+    //MARK: Variables
     var petitions = [Petition]()
     
+    //MARK: life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let urlString:String!
+        let urlString:String = route()
         
-        if navigationController?.tabBarItem.tag == 0{
-             urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
-        } else {
-             urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
-        }
+        addCreditsBarBtn()
         
-        
-       
         if let data = fetchData(fromUrl: urlString) {
             parseJson(json: data)
+        } else {
+            showError()
         }
         
     }
     
+    //MARK: UIFunctions
+    func route()->String{
+        if navigationController?.tabBarItem.tag == 0{
+             return "https://www.hackingwithswift.com/samples/petitions-1.json"
+        } else {
+            return "https://www.hackingwithswift.com/samples/petitions-2.json"
+        }
+    }
     
+    func addCreditsBarBtn(){
+       navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(showCredits))
+    }
     
+    func showError() {
+        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    
+    //MARK: Functions
     func fetchData(fromUrl urlString:String)->Data?{
         
         if let url = URL(string: urlString) {
@@ -39,7 +55,6 @@ class ViewController: UITableViewController {
                 return data
             }
         }
-        
         return nil
     }
     
@@ -48,9 +63,22 @@ class ViewController: UITableViewController {
         if let jsonData = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonData.results
             tableView.reloadData()
+            return
         }
+        showError()
+    }
+    //MARK: Objective C functions
+    @objc func showCredits(){
+        let ac = UIAlertController(title: "Credits", message: "he data comes from the We The People API of the Whitehouse", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "ok", style: .default, handler: nil)
+        
+        ac.addAction(okAction)
+        
+        present(ac, animated: true, completion: nil)
     }
     
+    
+    //MARK: table view functions
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
