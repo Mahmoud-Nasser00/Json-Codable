@@ -84,7 +84,7 @@ class ViewController: UITableViewController {
     }
     //MARK: Objective C functions
     @objc func showCredits(){
-        let ac = UIAlertController(title: "Credits", message: "he data comes from the We The People API of the Whitehouse", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Credits", message: "The data comes from the We The People API of the Whitehouse", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "ok", style: .default, handler: nil)
         
         ac.addAction(okAction)
@@ -115,7 +115,7 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
-        vc.detailItem = petitions[indexPath.row]
+        vc.detailItem = petitionsToShow[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     
